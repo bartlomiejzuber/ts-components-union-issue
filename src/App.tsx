@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+type FirstProps = {
+  inner: {
+    type: "First"
+  },
+  type: "First";
+};
+const FirstComponent: React.FC<FirstProps> = () => <div />;
+
+type SecondProps = {
+  inner: {
+    type: "Second"
+  },
+  type: "Second";
+};
+const SecondComponent: React.FC<SecondProps> = () => <div />;
+
+const UnionComponent:
+  | React.FC<FirstProps>
+  | React.FC<SecondProps> = SecondComponent;
+
+type Test = FirstProps | SecondProps;
+
+const test: Test = {
+  type: "First",
+  inner: { 
+    type: 
+  }
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <UnionComponent />;
 }
 
 export default App;
